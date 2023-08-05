@@ -1,6 +1,6 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
-console.log(galleryItems);
+
 const container = document.querySelector('.gallery')
 // console.log(container);
 function createMarkup(arr) {
@@ -14,23 +14,40 @@ return arr.map(({ preview, original, description }) => `
         src="${preview}"
         data-source="${original}"
         alt="${description}"
-        width="200"
     />
     </a>
     </li>`).join('')
 }
 
-container.insertAdjacentHTML('beforeend', createMarkup(galleryItems))
+container.insertAdjacentHTML('beforeend', createMarkup(galleryItems));
+container.addEventListener('click', handlerGalleryClick)
+function handlerGalleryClick(evt) {
+       evt.preventDefault()
+       if (!evt.target.classList.contains("gallery__image")) {
+       return;
+       }
+//    console.log(evt,target);
+   const picture = evt.target.dataset.sourse;
+   const currentItem = evt.target.closest('.gallery__item');
+// console.log(currentItem);
+
+const instance = basicLightbox.create(`
+    <div class="modal">
+        <img src=“${picture}” alt=“” width=“800px”/>
+    </div>
+`)
+instance.show();
+
+container.addEventListener('keydown', (evt) => {
+    if (evt.code === "Escape") {
+        instance.close();
+    }
+})
+}
+
+console.log(galleryItems);
 
 
 
 
 
-
-// {
-//     preview:
-//       'https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820__480.jpg',
-//     original:
-//       'https://cdn.pixabay.com/photo/2019/05/14/16/43/rchids-4202820_1280.jpg',
-//     description: 'Hokkaido Flower',
-//   },
