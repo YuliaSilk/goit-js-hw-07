@@ -32,9 +32,9 @@ function handlerGalleryClick(evt) {
 // console.log(currentItem);
 
 const instance = basicLightbox.create(`
-    <div class="modal">
-        <img src=“${picture}” alt=“” width=“800px”/>
-    </div>
+   
+    <img src='${evt.target.src}' width="800" height="600">
+  
 `)
 instance.show();
 
