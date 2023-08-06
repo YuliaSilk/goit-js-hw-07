@@ -24,7 +24,7 @@ const currentItem = evt.target.closest('gallery__item')
 // console.log(evt,target);
 // console.log(currentItem);
 
-console.log(SimpleLigthbox);
+
 
 
  }
@@ -37,3 +37,4 @@ var lightbox = new SimpleLigthbox('.gallery a', {
     captionsDelay: 250,
 });
 
+// console.log(SimpleLigthbox);
