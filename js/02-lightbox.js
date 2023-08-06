@@ -13,25 +13,11 @@ return arr.map(({ preview, original, description }) => `
 
 container.insertAdjacentHTML('beforeend', createMarkup(galleryItems));
 
-// container.addEventListener('click', handlerGalleryClick)
-// function handlerGalleryClick(evt) {
-//     evt.preventDefault()
-//     if (!evt.target.classList.contains('gallery__image')) {
-//         return;
-//     }
-// const picture = evt.target.dataset.sourse;
-// const currentItem = evt.target.closest('gallery__item')
-// console.log(evt,target);
-// console.log(currentItem);
-
-//  }
-
-new SimpleLigthbox('.gallery a', {
+// console.log(SimpleLightbox);
+new SimpleLightbox('.gallery a', {
     captionsData: 'alt',
     captionsDelay: 250,
 });
 console.log(galleryItems);
 
 
-
-// console.log(SimpleLigthbox);
