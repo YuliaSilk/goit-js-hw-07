@@ -23,7 +23,7 @@ container.insertAdjacentHTML('beforeend', createMarkup(galleryItems));
 container.addEventListener('click', handlerGalleryClick)
 function handlerGalleryClick(evt) {
        evt.preventDefault()
-       if (!evt.target.classList.contains("gallery__image")) {
+       if(e.target.tagName !== 'IMG')  {
        return;
        }
 //    console.log(evt,target);
@@ -42,12 +42,25 @@ container.addEventListener('keydown', (evt) => {
     if (evt.code === "Escape") {
         instance.close();
     }
-})
-}
+});
+
+window.removeEventListener('keydown', (evt) => {
+    const instance = basicLightbox.create(` <img src='${evt.target.src}'>`, {
+        onClose: (instance) => {
+            instance.close();
+        },
+        onShow: (instance) => {
+            instance.show();
+        },
+    });
+    
+});
+
+};
+
+
 
 console.log(galleryItems);
-
-
 
 
 
